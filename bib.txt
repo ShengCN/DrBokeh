@@ -1,0 +1,7 @@
+@article{sheng2020ssn,
+  title={SSN: Soft Shadow Network for Image Compositing},
+  author={Sheng, Yichen and Zhang, Jianming and Benes, Bedrich},
+  journal={arXiv preprint arXiv:2007.08211},
+  year={2020}
+}
+

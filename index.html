@@ -1,0 +1,226 @@
+
+<!DOCTYPE html>
+<html>
+
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+
+    <title>PixHt-Lab: Pixel Height Based Light Effect Generation for Image Compositing</title>
+
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- <base href="/"> -->
+
+<!--     <link rel="apple-touch-icon" href="apple-touch-icon.png"> -->
+  <!-- <link rel="icon" type="image/png" href="icon.png"> -->
+    <!-- Place favicon.ico in the root directory -->
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.css">
+    <link rel="stylesheet" href="css/app.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/codemirror/5.8.0/codemirror.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.3/clipboard.min.js"></script>
+
+    <script src="js/app.js"></script>
+</head>
+
+<body>
+    <div class="container" id="main">
+        <div class="row">
+            <h1 class="col-md-12 text-center">
+               Dr.Bokeh: DiffeRentiable Occlusion-aware Bokeh Rendering
+            </br>
+            </h1>
+        </div>
+        <div class="row">
+            <div class="col-md-12 text-center">
+                <ul class="list-inline">
+                    <li style="margin-right: 20px;">
+                        <a href="https://shengcn.github.io">
+                          Yichen Sheng
+                        </a>
+                        </br>Purdue University
+                    </li>
+                    <li style="margin-right: 20px;">
+                        <a href="https://www.linkedin.com/in/zixun-yu-ba0548171/">
+                          Zixun Yu 
+                        </a>
+                        </br>Purdue University
+                    </li>
+                    <li style="margin-right: 20px;">
+                        <a href="https://luling06.github.io/">
+                          Lu Ling 
+                        </a>
+                        </br>Purdue University
+                    </li>
+                    <li style="margin-right: 20px;">
+                        <a href="https://scholar.google.com/citations?user=Z47qOokAAAAJ&hl=en">
+                          Zhiwen Cao 
+                        </a>
+                        </br> Adobe
+                    </li>
+                    <br/>
+                    <li style="margin-right: 20px;">
+                        <a href="https://ceciliavision.github.io/">
+                            Cecilia Zhang
+                        </a>
+                        </br> Adobe
+                    </li>
+                    <li style="margin-right: 20px;">
+                        <a href="https://scholar.google.com/citations?user=mFC0wp8AAAAJ&hl=en">
+                            Xin Lu
+                        </a>
+                        </br> Adobe
+                    </li>
+                    <li style="margin-right: 20px;">
+                        <a href="https://luling06.github.io/">
+                            Ke Xian 
+                        </a>
+                        </br> Nanyang Technological University 
+                    </li>
+                    <li style="margin-right: 20px;">
+                        <a href="https://www.linkedin.com/in/haiting-lin-68169b102/">
+                            Haiting Lin 
+                        </a>
+                        </br>Adobe 
+                    </li>
+                    <li style="margin-right: 20px;">
+                        <a href="https://www.cs.purdue.edu/homes/bbenes/">
+                          Bedrich Benes
+                        </a>
+                        </br>Purdue University
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="row">
+                <div class="col-md-8 col-md-offset-2 text-center">
+                    <ul class="nav nav-pills nav-justified">
+                        <li>
+                            <!-- <a href="https://arxiv.org/pdf/2303.00137.pdf"> -->
+                            <image src="figures/paper.png" height="120px"><br>
+                                <h4><strong>Paper, Coming</strong></h4>
+                            <!-- </a> -->
+                        </li>
+                         <li>
+                            <!-- <a href="https://github.com/ShengCN/PixHtLab-Src"> -->
+                            <image src="figures/github_icon.png" height="120px"><br>
+                                <h4><strong>Code, Coming soon.</strong></h4>
+                            <!-- </a> -->
+                        </li>
+                    </ul>
+                </div>
+        </div>
+
+        <!-- <div class="row"> -->
+        <!--     <div class="col-md-8 col-md-offset-2"> -->
+        <!--         <h3> -->
+        <!--             Animation  -->
+        <!--         </h3> -->
+        <!--         <div class="text-center"> -->
+        <!--             <img src="figures/anim.gif" style="max-width:100%"> -->
+        <!--         </div> -->
+        <!--         </div> -->
+        <!-- </div> -->
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Abstract
+                </h3>
+                <p class="text-justify">
+                    Bokeh is widely used in photography to draw attention to the subject while effectively isolating distractions in the background. Computational methods simulate bokeh effects without relying on a physical camera lens. However, in the realm of digital bokeh synthesis, the two main challenges for bokeh synthesis are color bleeding and partial occlusion at object boundaries. Our primary goal is to overcome these two major challenges using physics principles that define bokeh formation. To achieve this, we propose a novel and accurate filtering-based bokeh rendering equation and a physically-based occlusion-aware bokeh renderer, dubbed Dr.Bokeh, which addresses the aforementioned challenges during the rendering stage without the need of post-processing or data-driven approaches. Our rendering algorithm first preprocesses the input RGBD to obtain a layered scene representation. Dr.Bokeh then takes the layered representation and user-defined lens parameters to render photo-realistic lens blur. By softening non-differentiable operations, we make Dr.Bokeh differentiable such that it can be plugged into a machine-learning framework. We perform quantitative and qualitative evaluations on synthetic and real-world images to validate the effectiveness of the rendering quality and the differentiability of our method. We show Dr.Bokeh not only outperforms state-of-the-art bokeh rendering algorithms in terms of photo-realism but also improves the depth quality from depth-from-defocus.                 
+                </p>
+                <br>
+                <image src="figures/Teaser.png" class="img-responsive" alt="overview"><br>
+            </div>
+        </div>
+
+        <!-- <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                   Real World Examples
+                </h3>
+                <div class="text-center">
+                    <image src="figures/more_results2.png" class="img-responsive" alt="overview"><br>
+                    </div>
+                </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                  Controllable Physics-Based Reflection
+                </h3>
+                <div class="text-center">
+                    <image src="figures/controllable_reflection.png" class="img-responsive" alt="overview"><br>
+                    </div>
+                </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                   More Results 
+                </h3>
+                <div class="text-center">
+                    <image src="figures/more_results.png" class="img-responsive" alt="overview"><br>
+                    </div>
+                </div>
+        </div> -->
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Technical Video
+                </h3>
+                <div class="text-center">
+                    <div style="position:relative;">
+                        <!-- <iframe align="center" width="100%" height="422" src="https://youtu.be/embed/H2B0yrEf86I" frameborder="0" allowfullscreen></iframe> -->
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/iDGsC1BuO-A" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    BibTeX
+                </h3>
+                <div class="form-group col-md-10 col-md-offset-1">
+                    <textarea id="bibtex" class="form-control" readonly>
+                        Coming soon.
+                    </textarea>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <h3>
+                    Acknowledgements
+                </h3>
+                <p>
+                    Part of this work was done during Yichen’s internship at Adobe.                 </p>
+                <p>
+                    The website template was borrowed from 
+                    <a href="http://mgharbi.com/">Micha&euml;l Gharbi</a>.
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
